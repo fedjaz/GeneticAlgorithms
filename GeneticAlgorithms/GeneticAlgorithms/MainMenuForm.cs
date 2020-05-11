@@ -37,6 +37,11 @@ namespace GeneticAlgorithms
 
         }
 
+        private void flatButton5_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if(!isDown)

@@ -67,6 +67,11 @@ namespace GeneticAlgorithms
         {
             base.OnPaint(pevent);
             pevent.Graphics.FillRectangle(new SolidBrush(curColor), new Rectangle(0, 0, Width, Height));
+            if(BackgroundImage != null)
+            {
+                pevent.Graphics.DrawImage(BackgroundImage, new Rectangle(0, 0, Width, Height));
+            }
+            
         }
     }
 }
