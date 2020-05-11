@@ -49,6 +49,12 @@
     <Compile Include="FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FlatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlatForm.Designer.cs">
+      <DependentUpon>FlatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FlatForm.resx">
+      <DependentUpon>FlatForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +106,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cross_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cross_Click.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

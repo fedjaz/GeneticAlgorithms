@@ -83,6 +83,26 @@ namespace GeneticAlgorithms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cross_Click {
+            get {
+                object obj = ResourceManager.GetObject("Cross_Click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cross_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Cross_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dino {
             get {
                 object obj = ResourceManager.GetObject("Dino", resourceCulture);

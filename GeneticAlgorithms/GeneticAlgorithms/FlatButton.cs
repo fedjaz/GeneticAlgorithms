@@ -11,20 +11,30 @@ namespace GeneticAlgorithms
     class FlatButton : Button
     {
         Color curColor;
-        Color backColor;
-        public override Color BackColor { get => backColor; set => SetBackColor(value); }
+        Image curImage;
+        public override Color BackColor { get => base.BackColor; set => SetBackColor(value); }
         public Color HoverColor { get; set; }
         public Color ClickColor { get; set; }
-        public FlatButton(Color backColor, Color hoverColor, Color clickColor)
-        {
-            BackColor = backColor;
-            HoverColor = hoverColor;
-            ClickColor = clickColor;
-        }
+        public override Image BackgroundImage { get => base.BackgroundImage; set => SetDefaultImage(value); }
+        public Image HoverImage { get; set; }
+        public Image ClickImage { get; set; }
 
         public FlatButton()
         {
             curColor = BackColor;
+            curImage = Image;
+            Invalidate();
+        }
+
+        void SetDefaultImage(Image image)
+        {
+            base.BackgroundImage = image;
+            SetImage(image);
+        }
+
+        void SetImage(Image image)
+        {
+            curImage = image;
             Invalidate();
         }
 
@@ -32,7 +42,6 @@ namespace GeneticAlgorithms
         {
             base.BackColor = color;
             SetColor(color);
-            backColor = color;
         }
         void SetColor(Color color)
         {
@@ -43,33 +52,47 @@ namespace GeneticAlgorithms
         {
             base.OnMouseEnter(e);
             SetColor(HoverColor);
+            if(HoverImage != null)
+            {
+                SetImage(HoverImage);
+            }
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
             SetColor(BackColor);
+            SetImage(BackgroundImage);
         }
 
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
             base.OnMouseDown(mevent);
             SetColor(ClickColor);
+            if(ClickImage != null)
+            {
+                SetImage(ClickImage);
+            }
         }
 
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
             base.OnMouseUp(mevent);
             SetColor(HoverColor);
+            if(HoverImage != null)
+            {
+                SetImage(HoverImage);
+            }
         }
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
             pevent.Graphics.FillRectangle(new SolidBrush(curColor), new Rectangle(0, 0, Width, Height));
-            if(BackgroundImage != null)
+            if(curImage != null)
             {
-                pevent.Graphics.DrawImage(BackgroundImage, new Rectangle(0, 0, Width, Height));
+                pevent.Graphics.DrawImage(curImage, new Rectangle(0, 0, Width, Height));
+
             }
             
         }
