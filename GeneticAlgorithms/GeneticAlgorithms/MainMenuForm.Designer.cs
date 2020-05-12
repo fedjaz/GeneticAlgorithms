@@ -28,81 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flatButton4 = new GeneticAlgorithms.FlatButton();
-            this.flatButton3 = new GeneticAlgorithms.FlatButton();
-            this.flatButton2 = new GeneticAlgorithms.FlatButton();
-            this.flatButton1 = new GeneticAlgorithms.FlatButton();
+            this.DinoButton = new GeneticAlgorithms.FlatButton();
+            this.FlappyBirdButton = new GeneticAlgorithms.FlatButton();
+            this.BreakoutButton = new GeneticAlgorithms.FlatButton();
+            this.TrainButton = new GeneticAlgorithms.FlatButton();
             this.flatButton5 = new GeneticAlgorithms.FlatButton();
             this.SuspendLayout();
             // 
-            // flatButton4
+            // DinoButton
             // 
-            this.flatButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DinoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(92)))), ((int)(((byte)(244)))));
-            this.flatButton4.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.Dino;
-            this.flatButton4.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(70)))), ((int)(((byte)(210)))));
-            this.flatButton4.ClickImage = null;
-            this.flatButton4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(121)))), ((int)(((byte)(249)))));
-            this.flatButton4.HoverImage = null;
-            this.flatButton4.Location = new System.Drawing.Point(191, 176);
-            this.flatButton4.Name = "flatButton4";
-            this.flatButton4.Size = new System.Drawing.Size(300, 72);
-            this.flatButton4.TabIndex = 4;
-            this.flatButton4.Text = "flatButton4";
-            this.flatButton4.UseVisualStyleBackColor = false;
+            this.DinoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(92)))), ((int)(((byte)(244)))));
+            this.DinoButton.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.Dino;
+            this.DinoButton.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(70)))), ((int)(((byte)(210)))));
+            this.DinoButton.ClickImage = null;
+            this.DinoButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(121)))), ((int)(((byte)(249)))));
+            this.DinoButton.HoverImage = null;
+            this.DinoButton.Location = new System.Drawing.Point(191, 176);
+            this.DinoButton.Name = "DinoButton";
+            this.DinoButton.Size = new System.Drawing.Size(300, 72);
+            this.DinoButton.TabIndex = 4;
+            this.DinoButton.UseVisualStyleBackColor = false;
+            this.DinoButton.Click += new System.EventHandler(this.DinoButton_Click);
             // 
-            // flatButton3
+            // FlappyBirdButton
             // 
-            this.flatButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.FlappyBirdButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(216)))), ((int)(((byte)(16)))));
-            this.flatButton3.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.FlappyBird;
-            this.flatButton3.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(156)))), ((int)(((byte)(12)))));
-            this.flatButton3.ClickImage = null;
-            this.flatButton3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(244)))), ((int)(((byte)(104)))));
-            this.flatButton3.HoverImage = null;
-            this.flatButton3.Location = new System.Drawing.Point(191, 71);
-            this.flatButton3.Name = "flatButton3";
-            this.flatButton3.Size = new System.Drawing.Size(300, 72);
-            this.flatButton3.TabIndex = 3;
-            this.flatButton3.Text = "flatButton3";
-            this.flatButton3.UseVisualStyleBackColor = false;
+            this.FlappyBirdButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(216)))), ((int)(((byte)(16)))));
+            this.FlappyBirdButton.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.FlappyBird;
+            this.FlappyBirdButton.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(156)))), ((int)(((byte)(12)))));
+            this.FlappyBirdButton.ClickImage = null;
+            this.FlappyBirdButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(244)))), ((int)(((byte)(104)))));
+            this.FlappyBirdButton.HoverImage = null;
+            this.FlappyBirdButton.Location = new System.Drawing.Point(191, 71);
+            this.FlappyBirdButton.Name = "FlappyBirdButton";
+            this.FlappyBirdButton.Size = new System.Drawing.Size(300, 72);
+            this.FlappyBirdButton.TabIndex = 3;
+            this.FlappyBirdButton.UseVisualStyleBackColor = false;
+            this.FlappyBirdButton.Click += new System.EventHandler(this.FlappyBirdButton_Click);
             // 
-            // flatButton2
+            // BreakoutButton
             // 
-            this.flatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(114)))), ((int)(((byte)(4)))));
-            this.flatButton2.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.Breakout;
-            this.flatButton2.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
-            this.flatButton2.ClickImage = null;
-            this.flatButton2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(142)))), ((int)(((byte)(52)))));
-            this.flatButton2.HoverImage = null;
-            this.flatButton2.Location = new System.Drawing.Point(191, 281);
-            this.flatButton2.Name = "flatButton2";
-            this.flatButton2.Size = new System.Drawing.Size(300, 72);
-            this.flatButton2.TabIndex = 2;
-            this.flatButton2.Text = "flatButton2";
-            this.flatButton2.UseVisualStyleBackColor = false;
+            this.BreakoutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(114)))), ((int)(((byte)(4)))));
+            this.BreakoutButton.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.Breakout;
+            this.BreakoutButton.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(90)))), ((int)(((byte)(0)))));
+            this.BreakoutButton.ClickImage = null;
+            this.BreakoutButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(142)))), ((int)(((byte)(52)))));
+            this.BreakoutButton.HoverImage = null;
+            this.BreakoutButton.Location = new System.Drawing.Point(191, 281);
+            this.BreakoutButton.Name = "BreakoutButton";
+            this.BreakoutButton.Size = new System.Drawing.Size(300, 72);
+            this.BreakoutButton.TabIndex = 2;
+            this.BreakoutButton.UseVisualStyleBackColor = false;
+            this.BreakoutButton.Click += new System.EventHandler(this.BreakoutButton_Click);
             // 
-            // flatButton1
+            // TrainButton
             // 
-            this.flatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TrainButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
-            this.flatButton1.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.Train;
-            this.flatButton1.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.flatButton1.ClickImage = null;
-            this.flatButton1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.flatButton1.HoverImage = null;
-            this.flatButton1.Location = new System.Drawing.Point(191, 386);
-            this.flatButton1.Name = "flatButton1";
-            this.flatButton1.Size = new System.Drawing.Size(300, 72);
-            this.flatButton1.TabIndex = 1;
-            this.flatButton1.Text = "flatButton1";
-            this.flatButton1.UseVisualStyleBackColor = false;
+            this.TrainButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
+            this.TrainButton.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.Train;
+            this.TrainButton.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.TrainButton.ClickImage = null;
+            this.TrainButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.TrainButton.HoverImage = null;
+            this.TrainButton.Location = new System.Drawing.Point(191, 386);
+            this.TrainButton.Name = "TrainButton";
+            this.TrainButton.Size = new System.Drawing.Size(300, 72);
+            this.TrainButton.TabIndex = 1;
+            this.TrainButton.UseVisualStyleBackColor = false;
+            this.TrainButton.Click += new System.EventHandler(this.TrainButton_Click);
             // 
             // flatButton5
             // 
@@ -124,25 +124,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Indigo;
             this.ClientSize = new System.Drawing.Size(676, 486);
-            this.Controls.Add(this.flatButton4);
-            this.Controls.Add(this.flatButton3);
-            this.Controls.Add(this.flatButton2);
-            this.Controls.Add(this.flatButton1);
+            this.Controls.Add(this.DinoButton);
+            this.Controls.Add(this.FlappyBirdButton);
+            this.Controls.Add(this.BreakoutButton);
+            this.Controls.Add(this.TrainButton);
             this.Name = "MainMenuForm";
             this.Text = "Main menu";
-            this.Controls.SetChildIndex(this.flatButton1, 0);
-            this.Controls.SetChildIndex(this.flatButton2, 0);
-            this.Controls.SetChildIndex(this.flatButton3, 0);
-            this.Controls.SetChildIndex(this.flatButton4, 0);
+            this.Controls.SetChildIndex(this.TrainButton, 0);
+            this.Controls.SetChildIndex(this.BreakoutButton, 0);
+            this.Controls.SetChildIndex(this.FlappyBirdButton, 0);
+            this.Controls.SetChildIndex(this.DinoButton, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private FlatButton flatButton1;
-        private FlatButton flatButton2;
-        private FlatButton flatButton3;
-        private FlatButton flatButton4;
+        private FlatButton TrainButton;
+        private FlatButton BreakoutButton;
+        private FlatButton FlappyBirdButton;
+        private FlatButton DinoButton;
         private FlatButton flatButton5;
     }
 }

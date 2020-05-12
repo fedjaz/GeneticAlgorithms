@@ -29,11 +29,45 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.GameBox = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.GameBox)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // GameBox
+            // 
+            this.GameBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GameBox.Location = new System.Drawing.Point(0, 36);
+            this.GameBox.Name = "GameBox";
+            this.GameBox.Size = new System.Drawing.Size(1000, 500);
+            this.GameBox.TabIndex = 2;
+            this.GameBox.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 20;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // GameForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.Indigo;
+            this.ClientSize = new System.Drawing.Size(1000, 706);
+            this.Controls.Add(this.GameBox);
+            this.Name = "GameForm";
             this.Text = "GameForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
+            this.Controls.SetChildIndex(this.GameBox, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.GameBox)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox GameBox;
+        private System.Windows.Forms.Timer timer1;
     }
 }

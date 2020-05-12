@@ -61,6 +61,7 @@
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.Size = new System.Drawing.Size(29, 28);
             this.MinimizeButton.TabIndex = 6;
+            this.MinimizeButton.TabStop = false;
             this.MinimizeButton.UseVisualStyleBackColor = false;
             this.MinimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
             // 
@@ -77,6 +78,7 @@
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(29, 28);
             this.CloseButton.TabIndex = 5;
+            this.CloseButton.TabStop = false;
             this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.flatButton5_Click);
             // 
@@ -89,6 +91,7 @@
             this.Controls.Add(this.CaptionBar);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "FlatForm";
             this.Text = "FlatForm";
             this.CaptionBar.ResumeLayout(false);
