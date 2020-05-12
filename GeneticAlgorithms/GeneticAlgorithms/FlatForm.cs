@@ -40,6 +40,11 @@ namespace GeneticAlgorithms
             Location = new Point(Location.X + deltaX, Location.Y + deltaY);
         }
 
+        private void MinimizeButton_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
         private void SystemPanel_MouseDown(object sender, MouseEventArgs e)
         {
             isDown = true;
