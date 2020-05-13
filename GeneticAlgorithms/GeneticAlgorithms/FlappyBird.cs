@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,8 +19,12 @@ namespace GeneticAlgorithms
         double pipeWidth, pipeHeight;
         List<PointF> pipes;
         int lastAddScore = 0;
+        int ticks = 0;
         double pipeSpacing;
+        double firstGroundPos;
         Random r;
+        Bitmap downPipe, upPipe, ground;
+        Bitmap bird1, bird2, bird3, prevBird, curBird;
         public FlappyBird(double speed, Random r) : base(speed)
         {
             IsDead = false;
@@ -34,12 +39,27 @@ namespace GeneticAlgorithms
             }
 
             posY = ControlSize.Height / 2;
-            rad = 20;
-            minPosY = 10;
+            rad = 25;
+            minPosY = 50;
             maxPosY = ControlSize.Height + 50;
             pipeWidth = 60;
-            pipeHeight = 75;
-            pipeSpacing = 250;
+            pipeHeight = 100;
+            pipeSpacing = 200;
+            firstGroundPos = -ControlSize.Width / 2;
+            ground = new Bitmap(Properties.Resources.FlappyBirdGround, 200, 100);
+            downPipe = new Bitmap(Properties.Resources.Downpipe);
+            upPipe = new Bitmap(Properties.Resources.Uppipe);
+            float coef = (float)pipeWidth / downPipe.Width;
+            downPipe = new Bitmap(downPipe, new Size((int)pipeWidth, (int)(downPipe.Height * coef)));
+            upPipe = new Bitmap(upPipe, new Size((int)pipeWidth, (int)(upPipe.Height * coef)));
+            //tmp
+            curBird = new Bitmap(Properties.Resources.Bird2);
+            coef = (float)rad / curBird.Height;
+            curBird = new Bitmap(curBird, new Size((int)(curBird.Width * coef), (int)rad));
+            bird1 = new Bitmap(Properties.Resources.Bird1, new Size((int)(Properties.Resources.Bird1.Width * coef), (int)rad));
+            prevBird = curBird;
+            bird2 = curBird;
+            bird3 = new Bitmap(Properties.Resources.Bird3, new Size((int)(Properties.Resources.Bird3.Width * coef), (int)rad));
         }
 
         public override void Tick()
@@ -48,6 +68,12 @@ namespace GeneticAlgorithms
             {
                 return;
             }
+            ticks++;
+            if(ticks % 5 == 0)
+            {
+                ChangePicture();
+            }
+            
             for(int i = 0; i < Math.Abs(velocity); i++)
             {
                 posY += Speed * (Math.Abs(velocity) / velocity);
@@ -68,24 +94,33 @@ namespace GeneticAlgorithms
                 pipes.AddRange(GetPipes(5, pipes.Last().X));
                 lastAddScore = score;
             }
+            if(firstGroundPos < posX - ControlSize.Width)
+            {
+                firstGroundPos += ground.Width;
+            }
         }
 
         public override void PaintOnControl(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.FillRectangle(new SolidBrush(Color.Blue), 0, 0, ControlSize.Width, ControlSize.Height);
+            e.Graphics.DrawImage(Properties.Resources.FlappyBirdBackground, 0, 0, ControlSize.Width, ControlSize.Height);
             if(pipes != null)
             {
                 for(int i = Math.Max(0, score - 5); i < score + 5; i++)
                 {
                     PointF p = pipes[i];
                     float x = p.X - (float)posX + ControlSize.Width / 2;
-                    e.Graphics.FillRectangle(new SolidBrush(Color.Green), x, ControlSize.Height - p.Y, (float)pipeWidth, ControlSize.Height);
-                    e.Graphics.FillRectangle(new SolidBrush(Color.Green), x, -p.Y - (float)pipeHeight, (float)pipeWidth, ControlSize.Height);
+                    e.Graphics.DrawImage(downPipe, x, ControlSize.Height - p.Y);
+                    e.Graphics.DrawImage(upPipe, x, ControlSize.Height - p.Y  - upPipe.Height - (float)pipeHeight);
                 }
             }
-            RectangleF rect = new RectangleF((float)(ControlSize.Width / 2 - rad), (float)(ControlSize.Height - posY - rad / 2), (float)rad, (float)rad);
-            e.Graphics.FillEllipse(new SolidBrush(Color.Yellow), rect);
+            float groundX = (float)firstGroundPos;
+            while(groundX < posX + ControlSize.Width)
+            {
+                e.Graphics.DrawImage(ground, groundX - (float)posX, ControlSize.Height - (float)minPosY, ground.Width + 1, ground.Height);
+                groundX += ground.Width;
+            }
+            e.Graphics.DrawImage(curBird, (float)(ControlSize.Width / 2 - rad), (float)(ControlSize.Height - posY - rad / 2));
             e.Graphics.DrawString(score.ToString(), new Font("Lobster", 16), new SolidBrush(Color.White), 20, 20);
         }
 
@@ -149,7 +184,7 @@ namespace GeneticAlgorithms
 
         void CalculateCollisions()
         {
-            if(posY < minPosY)
+            if(posY - rad / 2 < minPosY)
             {
                 IsActive = false;
                 IsDead = true;
@@ -168,19 +203,45 @@ namespace GeneticAlgorithms
             }
         }
 
-        public void Up()
+        void Up()
         {
             if(posY < maxPosY)
                 velocity = 8;
         }
 
+        void ChangePicture()
+        {
+            if(curBird == bird1)
+            {
+                prevBird = bird1;
+                curBird = bird2;
+            }
+            else if(curBird == bird3)
+            {
+                prevBird = bird3;
+                curBird = bird2;
+            }
+            else
+            {
+                if(prevBird == bird1)
+                {
+                    curBird = bird3;
+                }
+                else
+                {
+                    curBird = bird1;
+                }
+                prevBird = bird2;
+            }
+        }
+
         List<PointF> GetPipes(int n, float startPos)
         {
             List<PointF> ans = new List<PointF>();
-            ans.Add(new PointF(startPos + (float)pipeSpacing, r.Next((int)minPosY + 100, (int)maxPosY - 150)));
+            ans.Add(new PointF(startPos + (float)pipeSpacing, r.Next((int)minPosY + 50, (int)maxPosY - 220)));
             for(int i = 1; i < n; i++)
             {
-                ans.Add(new PointF(ans.Last().X + (float)pipeSpacing, r.Next((int)minPosY + 100, (int)maxPosY - 150)));
+                ans.Add(new PointF(ans.Last().X + (float)pipeSpacing, r.Next((int)minPosY + 50, (int)maxPosY - 220)));
             }
             return ans;
         }

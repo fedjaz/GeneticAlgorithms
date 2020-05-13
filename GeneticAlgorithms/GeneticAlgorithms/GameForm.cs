@@ -34,6 +34,8 @@ namespace GeneticAlgorithms
         {
             if(game.IsDead)
             {
+                GameBox.Paint -= game.PaintOnControl;
+                KeyDown -= game.RecieveKey;
                 ConfigureGame(game.Clone() as Game);
             }
             if(game.IsActive)

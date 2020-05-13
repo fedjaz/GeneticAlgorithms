@@ -63,6 +63,36 @@ namespace GeneticAlgorithms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bird1 {
+            get {
+                object obj = ResourceManager.GetObject("Bird1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bird2 {
+            get {
+                object obj = ResourceManager.GetObject("Bird2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bird3 {
+            get {
+                object obj = ResourceManager.GetObject("Bird3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Breakout {
             get {
                 object obj = ResourceManager.GetObject("Breakout", resourceCulture);
@@ -113,9 +143,39 @@ namespace GeneticAlgorithms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Downpipe {
+            get {
+                object obj = ResourceManager.GetObject("Downpipe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FlappyBird {
             get {
                 object obj = ResourceManager.GetObject("FlappyBird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlappyBirdBackground {
+            get {
+                object obj = ResourceManager.GetObject("FlappyBirdBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlappyBirdGround {
+            get {
+                object obj = ResourceManager.GetObject("FlappyBirdGround", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +206,16 @@ namespace GeneticAlgorithms.Properties {
         internal static System.Drawing.Bitmap Train {
             get {
                 object obj = ResourceManager.GetObject("Train", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Uppipe {
+            get {
+                object obj = ResourceManager.GetObject("Uppipe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

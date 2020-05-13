@@ -135,5 +135,26 @@
   <ItemGroup>
     <None Include="Resources\Minimize_Hover.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlappyBirdBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Downpipe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Uppipe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bird1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bird2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bird3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlappyBirdGround.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

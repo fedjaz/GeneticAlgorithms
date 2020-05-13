@@ -36,7 +36,7 @@
             // 
             // CaptionBar
             // 
-            this.CaptionBar.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.CaptionBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.CaptionBar.Controls.Add(this.MinimizeButton);
             this.CaptionBar.Controls.Add(this.CloseButton);
             this.CaptionBar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -51,11 +51,11 @@
             // MinimizeButton
             // 
             this.MinimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MinimizeButton.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.MinimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.MinimizeButton.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.Minimize;
-            this.MinimizeButton.ClickColor = System.Drawing.Color.DarkSlateBlue;
+            this.MinimizeButton.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.MinimizeButton.ClickImage = global::GeneticAlgorithms.Properties.Resources.Minimize;
-            this.MinimizeButton.HoverColor = System.Drawing.Color.DarkSlateBlue;
+            this.MinimizeButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.MinimizeButton.HoverImage = global::GeneticAlgorithms.Properties.Resources.Minimize_Hover;
             this.MinimizeButton.Location = new System.Drawing.Point(632, 5);
             this.MinimizeButton.Name = "MinimizeButton";
@@ -68,11 +68,11 @@
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.CloseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.CloseButton.BackgroundImage = global::GeneticAlgorithms.Properties.Resources.Cross;
-            this.CloseButton.ClickColor = System.Drawing.Color.DarkSlateBlue;
+            this.CloseButton.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.CloseButton.ClickImage = global::GeneticAlgorithms.Properties.Resources.Cross_Click;
-            this.CloseButton.HoverColor = System.Drawing.Color.DarkSlateBlue;
+            this.CloseButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.CloseButton.HoverImage = global::GeneticAlgorithms.Properties.Resources.Cross_Hover;
             this.CloseButton.Location = new System.Drawing.Point(667, 5);
             this.CloseButton.Name = "CloseButton";

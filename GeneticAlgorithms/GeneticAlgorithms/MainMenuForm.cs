@@ -31,7 +31,7 @@ namespace GeneticAlgorithms
 
         private void FlappyBirdButton_Click(object sender, EventArgs e)
         {
-            StartGame(new FlappyBird(1, new Random()));
+            StartGame(new FlappyBird(0.5, new Random()));
         }
 
         private void DinoButton_Click(object sender, EventArgs e)
