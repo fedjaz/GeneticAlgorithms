@@ -32,7 +32,7 @@ namespace GeneticAlgorithms
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(game.IsDead)
+            if(game.IsDead && !game.IsActive)
             {
                 GameBox.Paint -= game.PaintOnControl;
                 KeyDown -= game.RecieveKey;

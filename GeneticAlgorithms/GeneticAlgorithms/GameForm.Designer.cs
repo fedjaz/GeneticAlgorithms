@@ -54,7 +54,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ClientSize = new System.Drawing.Size(1000, 706);
+            this.ClientSize = new System.Drawing.Size(1000, 666);
             this.Controls.Add(this.GameBox);
             this.Name = "GameForm";
             this.Text = "GameForm";

@@ -52,7 +52,6 @@ namespace GeneticAlgorithms
             float coef = (float)pipeWidth / downPipe.Width;
             downPipe = new Bitmap(downPipe, new Size((int)pipeWidth, (int)(downPipe.Height * coef)));
             upPipe = new Bitmap(upPipe, new Size((int)pipeWidth, (int)(upPipe.Height * coef)));
-            //tmp
             curBird = new Bitmap(Properties.Resources.Bird2);
             coef = (float)rad / curBird.Height;
             curBird = new Bitmap(curBird, new Size((int)(curBird.Width * coef), (int)rad));
@@ -64,12 +63,12 @@ namespace GeneticAlgorithms
 
         public override void Tick()
         {
-            if(!IsActive || IsDead)
+            if(!IsActive)
             {
                 return;
             }
             ticks++;
-            if(ticks % 5 == 0)
+            if(ticks % 5 == 0 && !IsDead)
             {
                 ChangePicture();
             }
@@ -79,8 +78,11 @@ namespace GeneticAlgorithms
                 posY += Speed * (Math.Abs(velocity) / velocity);
                 CalculateCollisions();
             }
-            
-            posX += Speed * 5;
+
+            if(!IsDead)
+            {
+                posX += Speed * 5;
+            }
             if(velocity >= -10)
                 velocity -= Speed;
 
@@ -111,7 +113,7 @@ namespace GeneticAlgorithms
                     PointF p = pipes[i];
                     float x = p.X - (float)posX + ControlSize.Width / 2;
                     e.Graphics.DrawImage(downPipe, x, ControlSize.Height - p.Y);
-                    e.Graphics.DrawImage(upPipe, x, ControlSize.Height - p.Y  - upPipe.Height - (float)pipeHeight);
+                    e.Graphics.DrawImage(upPipe, x, ControlSize.Height - p.Y - upPipe.Height - (float)pipeHeight);
                 }
             }
             float groundX = (float)firstGroundPos;
@@ -137,7 +139,10 @@ namespace GeneticAlgorithms
                     pipes = GetPipes(20, ControlSize.Width / 2);
                     IsActive = true;
                 }
-                Up();
+                if(!IsDead)
+                {
+                    Up();
+                }
             }
         }
 
@@ -198,7 +203,6 @@ namespace GeneticAlgorithms
             if(curDown.IntersectsWith(player) || prevDown.IntersectsWith(player) ||
                 curUp.IntersectsWith(player) || prevUp.IntersectsWith(player))
             {
-                IsActive = false;
                 IsDead = true;
             }
         }
