@@ -25,7 +25,7 @@ namespace GeneticAlgorithms
         Random r;
         Bitmap downPipe, upPipe, ground;
         Bitmap bird1, bird2, bird3, prevBird, curBird;
-        public FlappyBird(double speed, Random r) : base(speed)
+        public FlappyBird(double speed, Random r) : base(speed, new Keys[] { Keys.Space})
         {
             IsDead = false;
             this.r = r;
@@ -43,7 +43,7 @@ namespace GeneticAlgorithms
             minPosY = 50;
             maxPosY = ControlSize.Height + 50;
             pipeWidth = 60;
-            pipeHeight = 100;
+            pipeHeight = 80;
             pipeSpacing = 200;
             firstGroundPos = -ControlSize.Width / 2;
             ground = new Bitmap(Properties.Resources.FlappyBirdGround, 200, 100);
@@ -187,6 +187,10 @@ namespace GeneticAlgorithms
             return game;
         }
 
+        public override int GetScore()
+        {
+            return score;
+        }
         void CalculateCollisions()
         {
             if(posY - rad / 2 < minPosY)

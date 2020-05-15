@@ -73,6 +73,8 @@
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Matrix.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="NeuralNetwork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FlatForm.resx">

@@ -15,13 +15,14 @@ namespace GeneticAlgorithms
         public double Speed { get; set; }
         public bool IsActive { get; set; }
         public bool IsDead { get; set; }
-        public Dictionary<int, Keys> PredictionsMapping { get; private set; }
+        public Keys[] KeysMap { get; private set; }
         public abstract void RecieveKey(object sender, KeyEventArgs args);
         public abstract void Tick();
         public abstract void PaintOnControl(object sender, PaintEventArgs args);
         public abstract void SetDefaultOptions();
         public abstract Matrix<double> GetFeatures();
         public abstract double GetFitness();
+        public abstract int GetScore();
         public abstract object Clone();
         public enum Options
         {
@@ -29,8 +30,9 @@ namespace GeneticAlgorithms
             Other
         }
 
-        public Game(double speed)
+        public Game(double speed, Keys[] keys)
         {
+            KeysMap = keys;
             Speed = speed;
         }
     }
