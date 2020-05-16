@@ -63,6 +63,16 @@ namespace GeneticAlgorithms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BeginTrain {
+            get {
+                object obj = ResourceManager.GetObject("BeginTrain", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Bird1 {
             get {
                 object obj = ResourceManager.GetObject("Bird1", resourceCulture);
@@ -183,9 +193,9 @@ namespace GeneticAlgorithms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Minimize {
+        internal static System.Drawing.Bitmap FlatCross {
             get {
-                object obj = ResourceManager.GetObject("Minimize", resourceCulture);
+                object obj = ResourceManager.GetObject("FlatCross", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +203,9 @@ namespace GeneticAlgorithms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Minimize_Hover {
+        internal static System.Drawing.Bitmap Minimize {
             get {
-                object obj = ResourceManager.GetObject("Minimize_Hover", resourceCulture);
+                object obj = ResourceManager.GetObject("Minimize", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

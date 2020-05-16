@@ -92,9 +92,17 @@ namespace GeneticAlgorithms
             if(curImage != null)
             {
                 pevent.Graphics.DrawImage(curImage, new Rectangle(0, 0, Width, Height));
-
             }
-            
+            if(Text != "")
+            {
+                SizeF textSize = pevent.Graphics.MeasureString(Text, Font);
+                float y = (Height - textSize.Height) / 2, x = (Width - textSize.Width) / 2;
+                pevent.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), x, y);
+            }
+            if(!Enabled)
+            {
+                pevent.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(128, 128, 128, 128)), new Rectangle(0, 0, Width, Height));
+            }
         }
     }
 }

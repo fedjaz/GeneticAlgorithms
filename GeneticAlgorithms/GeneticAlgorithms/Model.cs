@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -18,6 +19,7 @@ namespace GeneticAlgorithms
             Other
         }
 
+        [JsonProperty]
         NeuralNetwork neuralNetwork;
         public Games GameType { get; }
         public double Fitness { get; private set;  }
@@ -48,7 +50,9 @@ namespace GeneticAlgorithms
             for(int i = 0; i < gamesCount; i++)
             {
                 Game newGame = etalonGame.Clone() as Game;
-                while(!newGame.IsDead && newGame.GetScore() <= maxScore)
+                newGame.IsActive = true;
+                newGame.IsDead = false;
+                while(!newGame.IsDead && newGame.GetScore() < maxScore)
                 {
                     newGame.Tick();
                     Predict(newGame);
@@ -96,6 +100,21 @@ namespace GeneticAlgorithms
 
             }
             return mutated;
+        }
+
+        public void Reset(Random r)
+        {
+            for(int i = 0; i < neuralNetwork.HiddenLayers.Count; i++)
+            {
+                neuralNetwork.HiddenLayers[i] = new Matrix<double>(neuralNetwork.HiddenLayers[i].Rows,
+                                                                   neuralNetwork.HiddenLayers[i].Cells,
+                                                                   () => (double)r.Next(-1000, 1001) / 1000);
+            }
+            neuralNetwork.OutputLayer = new Matrix<double>(neuralNetwork.OutputLayer.Rows,
+                                                           neuralNetwork.OutputLayer.Cells,
+                                                           () => (double)r.Next(-1000, 1001) / 1000);
+            neuralNetwork.Bias = new Matrix<double>(neuralNetwork.Bias.Rows, neuralNetwork.Bias.Cells,
+                                                    () => (double)r.Next(-1000, 1001) / 1000);
         }
 
         public object Clone()

@@ -11,6 +11,7 @@ namespace GeneticAlgorithms
 {
     public class FlappyBird : Game
     {
+        bool enableGraphics;
         double posY, posX;
         double minPosY, maxPosY;
         int score;
@@ -25,8 +26,10 @@ namespace GeneticAlgorithms
         Random r;
         Bitmap downPipe, upPipe, ground;
         Bitmap bird1, bird2, bird3, prevBird, curBird;
-        public FlappyBird(double speed, Random r) : base(speed, new Keys[] { Keys.Space})
+        public FlappyBird(double speed, Random r, bool enableGraphics) 
+                         : base(speed, new Keys[] { Keys.Space})
         {
+            this.enableGraphics = enableGraphics;
             IsDead = false;
             this.r = r;
         }
@@ -44,8 +47,16 @@ namespace GeneticAlgorithms
             maxPosY = ControlSize.Height + 50;
             pipeWidth = 60;
             pipeHeight = 80;
-            pipeSpacing = 200;
+            pipeSpacing = 220;
             firstGroundPos = -ControlSize.Width / 2;
+            if(enableGraphics)
+            {
+                SetPictures();
+            }
+        }
+
+        void SetPictures()
+        {
             ground = new Bitmap(Properties.Resources.FlappyBirdGround, 200, 100);
             downPipe = new Bitmap(Properties.Resources.Downpipe);
             upPipe = new Bitmap(Properties.Resources.Uppipe);
@@ -60,19 +71,30 @@ namespace GeneticAlgorithms
             bird2 = curBird;
             bird3 = new Bitmap(Properties.Resources.Bird3, new Size((int)(Properties.Resources.Bird3.Width * coef), (int)rad));
         }
-
         public override void Tick()
         {
             if(!IsActive)
             {
                 return;
             }
-            ticks++;
-            if(ticks % 5 == 0 && !IsDead)
+            if(pipes == null)
             {
-                ChangePicture();
+                pipes = GetPipes(20, ControlSize.Width / 2);
             }
-            
+
+            if(enableGraphics)
+            {
+                if(firstGroundPos < posX - ControlSize.Width)
+                {
+                    firstGroundPos += ground.Width;
+                }
+                ticks++;
+                if(ticks % 5 == 0 && !IsDead)
+                {
+                    ChangePicture();
+                }
+            }
+
             for(int i = 0; i < Math.Abs(velocity); i++)
             {
                 posY += Speed * (Math.Abs(velocity) / velocity);
@@ -96,10 +118,7 @@ namespace GeneticAlgorithms
                 pipes.AddRange(GetPipes(5, pipes.Last().X));
                 lastAddScore = score;
             }
-            if(firstGroundPos < posX - ControlSize.Width)
-            {
-                firstGroundPos += ground.Width;
-            }
+            
         }
 
         public override void PaintOnControl(object sender, PaintEventArgs e)
@@ -136,7 +155,6 @@ namespace GeneticAlgorithms
             {
                 if(!IsActive)
                 {
-                    pipes = GetPipes(20, ControlSize.Width / 2);
                     IsActive = true;
                 }
                 if(!IsDead)
@@ -173,7 +191,7 @@ namespace GeneticAlgorithms
 
         public override object Clone()
         {
-            Game game = new FlappyBird(Speed, r) 
+            Game game = new FlappyBird(Speed, r, enableGraphics) 
             {
                 ControlSize = ControlSize,
                 posY = posY,
@@ -184,6 +202,10 @@ namespace GeneticAlgorithms
                 pipeHeight = pipeHeight,
                 pipeSpacing = pipeSpacing
             };
+            if(enableGraphics)
+            {
+                (game as FlappyBird).SetPictures();
+            }
             return game;
         }
 

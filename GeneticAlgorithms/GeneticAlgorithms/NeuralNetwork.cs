@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Configuration;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GeneticAlgorithms
 {
@@ -27,8 +22,8 @@ namespace GeneticAlgorithms
             HiddenLayers = new List<Matrix<double>>();
             foreach(int s in hidden)
             {
-                lastSize = s;
                 HiddenLayers.Add(new Matrix<double>(lastSize, s, () => (double)r.Next(-1000, 1001) / 1000));
+                lastSize = s;
             }
             OutputLayer = new Matrix<double>(lastSize, output, () => (double)r.Next(-1000, 1001) / 1000);
             Bias = new Matrix<double>(1, output, () => (double)r.Next(-1000, 1001) / 1000);
@@ -57,15 +52,16 @@ namespace GeneticAlgorithms
         public static Matrix<double> Sigmoid(Matrix<double> input)
         {
             Matrix<double> ans = input.Clone() as Matrix<double>;
-            for (int i = 0; i < input.Rows; i++)
+            for(int i = 0; i < input.Rows; i++)
             {
-                for (int j = 0; j < input.Cells; j++)
+                for(int j = 0; j < input.Cells; j++)
                 {
                     ans[i, j] = 1 / (1 + Math.Exp(-ans[i, j]));
                 }
             }
             return ans;
         }
+
         public Matrix<double> Predict(Matrix<double> input)
         {
             foreach(Matrix<double> h in HiddenLayers)

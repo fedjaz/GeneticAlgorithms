@@ -19,7 +19,7 @@ namespace GeneticAlgorithms
             InitializeComponent();
         }
 
-        private void flatButton5_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }

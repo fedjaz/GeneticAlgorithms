@@ -14,9 +14,13 @@ namespace GeneticAlgorithms
     {
         Game game;
         Form parent;
-        public GameForm(Form parent, Game game)
+        public static Size ControlSize = new Size(1000, 500);
+        Model defaultModel;
+        public GameForm(Form parent, Game game, Model defaultModel)
         {
             InitializeComponent();
+            this.defaultModel = defaultModel;
+            GameBox.Size = ControlSize;
             this.parent = parent;
             ConfigureGame(game);
         }
@@ -41,6 +45,10 @@ namespace GeneticAlgorithms
             if(game.IsActive)
             {
                 game.Tick();
+                if(checkBox1.Checked)
+                {
+                    defaultModel.Predict(game);
+                }
             }
             GameBox.Invalidate();
         }
@@ -48,6 +56,11 @@ namespace GeneticAlgorithms
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             parent.Visible = true;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            GameBox.Focus();
         }
     }
 }
