@@ -11,10 +11,35 @@ namespace GeneticAlgorithms
     {
         public event EventHandler<int> ModelTested;
         public event EventHandler<GenerationEventArgs> GenerationPassed;
-        public Model Train(Model defaultModel, Game etalonGame,
-                                  int generationSize, int proceedToNext,
-                                  int maxGenerations, int maxScore, int gamesToPlay,
-                                  double mutationProbability, double mutationRate, Random r)
+        Model defaultModel;
+        Game etalonGame;
+        int generationSize;
+        int proceedToNext;
+        int maxGenerations;
+        int maxScore;
+        int gamesToPlay;
+        double mutationProbability;
+        double mutationRate; 
+        Random r;
+
+        public Trainer(Model defaultModel, Game etalonGame,
+                       int generationSize, int proceedToNext, int maxGenerations,
+                       int maxScore, int gamesToPlay, double mutationProbability,
+                       double mutationRate, Random r)
+        {
+            this.defaultModel = defaultModel;
+            this.etalonGame = etalonGame;
+            this.generationSize = generationSize;
+            this.proceedToNext = proceedToNext;
+            this.maxGenerations = maxGenerations;
+            this.maxScore = maxScore;
+            this.gamesToPlay = gamesToPlay;
+            this.mutationProbability = mutationProbability;
+            this.mutationRate = mutationRate;
+            this.r = r;
+        }
+
+        public Model Train()
         {
             List<Model> models = new List<Model>();
             for(int i = 0; i < generationSize; i++)
@@ -41,9 +66,7 @@ namespace GeneticAlgorithms
                         newGeneration.Add(newGeneration[i].Mutate(mutationRate, mutationProbability, r));
                     }
                 }
-                GenerationPassed?.Invoke(this, new GenerationEventArgs(generation + 1,
-                                               newGeneration[0].Fitness,
-                                               newGeneration[0].MeanScore));
+                GenerationPassed?.Invoke(this, new GenerationEventArgs(generation + 1, newGeneration[0]));
                 if(newGeneration[0].MeanScore == maxScore)
                 {
                     return newGeneration[0];

@@ -9,15 +9,13 @@ namespace GeneticAlgorithms
 {
     public class GenerationEventArgs : EventArgs
     {
-        public int GenerationNumber { get; set; }
-        public double Fitness { get; set; }
-        public double MeanScore { get; set; }
+        public int GenerationNumber { get; }
+        public Model Model { get; }
 
-        public GenerationEventArgs(int generationNumber, double fitness, double meanScore)
+        public GenerationEventArgs(int generationNumber, Model model)
         {
             GenerationNumber = generationNumber;
-            Fitness = fitness;
-            MeanScore = meanScore;
+            Model = model;
         }
     }
 }

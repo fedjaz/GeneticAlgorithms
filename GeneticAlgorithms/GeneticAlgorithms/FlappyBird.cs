@@ -47,7 +47,7 @@ namespace GeneticAlgorithms
             maxPosY = ControlSize.Height + 50;
             pipeWidth = 60;
             pipeHeight = 80;
-            pipeSpacing = 220;
+            pipeSpacing = 225;
             firstGroundPos = -ControlSize.Width / 2;
             if(enableGraphics)
             {
@@ -184,7 +184,7 @@ namespace GeneticAlgorithms
             output[0, 0] = velocity / 10;
             output[0, 1] = (pipe.X + pipeWidth + rad / 2 - posX) / pipeSpacing;
             output[0, 2] = (posY - pipe.Y) / maxPosY;
-            output[0, 3] = (pipe.Y - nextPipe.Y) / maxPosY;
+            output[0, 3] = (posY - nextPipe.Y) / maxPosY;
 
             return output;
         }

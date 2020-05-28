@@ -32,15 +32,15 @@
             this.TrainButton = new GeneticAlgorithms.FlatButton();
             this.GenerationProgress = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.GraphsBox = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.VisualizationBox = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.GenerationSize = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TrainingParameters = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.Games = new System.Windows.Forms.ComboBox();
+            this.GamesComboBox = new System.Windows.Forms.ComboBox();
             this.MutationRate = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.MutationProbability = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.GamesToPlay = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.MaxScore = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.GenerationsCount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,12 +57,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.flatButton1 = new GeneticAlgorithms.FlatButton();
             this.label14 = new System.Windows.Forms.Label();
+            this.SaveButton = new GeneticAlgorithms.FlatButton();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GraphsBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VisualizationBox)).BeginInit();
+            this.TrainingParameters.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,14 +116,15 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Output console";
             // 
-            // pictureBox1
+            // GraphsBox
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.pictureBox1.Location = new System.Drawing.Point(643, 73);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(600, 300);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.GraphsBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.GraphsBox.Location = new System.Drawing.Point(643, 73);
+            this.GraphsBox.Name = "GraphsBox";
+            this.GraphsBox.Size = new System.Drawing.Size(600, 300);
+            this.GraphsBox.TabIndex = 6;
+            this.GraphsBox.TabStop = false;
+            this.GraphsBox.Paint += new System.Windows.Forms.PaintEventHandler(this.GraphsBox_Paint);
             // 
             // label2
             // 
@@ -132,18 +133,23 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(638, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(207, 29);
+            this.label2.Size = new System.Drawing.Size(175, 29);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Training graphics";
+            this.label2.Text = "Training graph";
             // 
-            // pictureBox2
+            // VisualizationBox
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.pictureBox2.Location = new System.Drawing.Point(643, 428);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(600, 417);
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
+            this.VisualizationBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.VisualizationBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.VisualizationBox.Location = new System.Drawing.Point(643, 428);
+            this.VisualizationBox.Name = "VisualizationBox";
+            this.VisualizationBox.Size = new System.Drawing.Size(600, 417);
+            this.VisualizationBox.TabIndex = 8;
+            this.VisualizationBox.TabStop = false;
+            this.VisualizationBox.Paint += new System.Windows.Forms.PaintEventHandler(this.VisualizationBox_Paint);
+            this.VisualizationBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VisualizationBox_MouseDown);
+            this.VisualizationBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VisualizationBox_MouseMove);
+            this.VisualizationBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VisualizationBox_MouseUp);
             // 
             // label3
             // 
@@ -178,35 +184,35 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Generation size";
             // 
-            // groupBox1
+            // TrainingParameters
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.Games);
-            this.groupBox1.Controls.Add(this.MutationRate);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.MutationProbability);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.HiddenNeurons);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.GamesToPlay);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.GenerationsCount);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.ProceedToNext);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.GenerationSize);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 417);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(600, 211);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Training parameters";
+            this.TrainingParameters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.TrainingParameters.Controls.Add(this.label10);
+            this.TrainingParameters.Controls.Add(this.GamesComboBox);
+            this.TrainingParameters.Controls.Add(this.MutationRate);
+            this.TrainingParameters.Controls.Add(this.label11);
+            this.TrainingParameters.Controls.Add(this.MutationProbability);
+            this.TrainingParameters.Controls.Add(this.label12);
+            this.TrainingParameters.Controls.Add(this.HiddenNeurons);
+            this.TrainingParameters.Controls.Add(this.label9);
+            this.TrainingParameters.Controls.Add(this.GamesToPlay);
+            this.TrainingParameters.Controls.Add(this.label8);
+            this.TrainingParameters.Controls.Add(this.MaxScore);
+            this.TrainingParameters.Controls.Add(this.label7);
+            this.TrainingParameters.Controls.Add(this.GenerationsCount);
+            this.TrainingParameters.Controls.Add(this.label6);
+            this.TrainingParameters.Controls.Add(this.ProceedToNext);
+            this.TrainingParameters.Controls.Add(this.label5);
+            this.TrainingParameters.Controls.Add(this.GenerationSize);
+            this.TrainingParameters.Controls.Add(this.label4);
+            this.TrainingParameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.TrainingParameters.ForeColor = System.Drawing.Color.White;
+            this.TrainingParameters.Location = new System.Drawing.Point(12, 417);
+            this.TrainingParameters.Name = "TrainingParameters";
+            this.TrainingParameters.Size = new System.Drawing.Size(600, 211);
+            this.TrainingParameters.TabIndex = 12;
+            this.TrainingParameters.TabStop = false;
+            this.TrainingParameters.Text = "Training parameters";
             // 
             // label10
             // 
@@ -219,19 +225,19 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "Game";
             // 
-            // Games
+            // GamesComboBox
             // 
-            this.Games.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Games.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Games.FormattingEnabled = true;
-            this.Games.Items.AddRange(new object[] {
+            this.GamesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GamesComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.GamesComboBox.FormattingEnabled = true;
+            this.GamesComboBox.Items.AddRange(new object[] {
             "Flappy bird",
             "Dino",
             "Breakout"});
-            this.Games.Location = new System.Drawing.Point(21, 67);
-            this.Games.Name = "Games";
-            this.Games.Size = new System.Drawing.Size(150, 28);
-            this.Games.TabIndex = 26;
+            this.GamesComboBox.Location = new System.Drawing.Point(21, 67);
+            this.GamesComboBox.Name = "GamesComboBox";
+            this.GamesComboBox.Size = new System.Drawing.Size(150, 28);
+            this.GamesComboBox.TabIndex = 26;
             // 
             // MutationRate
             // 
@@ -321,16 +327,16 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Games to play";
             // 
-            // textBox1
+            // MaxScore
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(221, 119);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 26);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.Text = "1000";
+            this.MaxScore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.MaxScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.MaxScore.ForeColor = System.Drawing.Color.White;
+            this.MaxScore.Location = new System.Drawing.Point(221, 119);
+            this.MaxScore.Name = "MaxScore";
+            this.MaxScore.Size = new System.Drawing.Size(150, 26);
+            this.MaxScore.TabIndex = 16;
+            this.MaxScore.Text = "1000";
             // 
             // label7
             // 
@@ -401,7 +407,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.flatButton1);
+            this.groupBox2.Controls.Add(this.SaveButton);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(12, 724);
@@ -410,24 +416,6 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Saving";
-            // 
-            // flatButton1
-            // 
-            this.flatButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.flatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.flatButton1.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.flatButton1.ClickImage = null;
-            this.flatButton1.Enabled = false;
-            this.flatButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.flatButton1.ForeColor = System.Drawing.Color.White;
-            this.flatButton1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(50)))));
-            this.flatButton1.HoverImage = null;
-            this.flatButton1.Location = new System.Drawing.Point(422, 23);
-            this.flatButton1.Name = "flatButton1";
-            this.flatButton1.Size = new System.Drawing.Size(161, 80);
-            this.flatButton1.TabIndex = 4;
-            this.flatButton1.Text = "Save model";
-            this.flatButton1.UseVisualStyleBackColor = false;
             // 
             // label14
             // 
@@ -440,19 +428,43 @@
             this.label14.TabIndex = 6;
             this.label14.Text = "Save model after training on disk";
             // 
+            // SaveButton
+            // 
+            this.SaveButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.SaveButton.ClickColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.SaveButton.ClickImage = null;
+            this.SaveButton.Enabled = false;
+            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.SaveButton.ForeColor = System.Drawing.Color.White;
+            this.SaveButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(50)))));
+            this.SaveButton.HoverImage = null;
+            this.SaveButton.Location = new System.Drawing.Point(422, 23);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(161, 80);
+            this.SaveButton.TabIndex = 4;
+            this.SaveButton.Text = "Save model";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "model";
+            this.saveFileDialog1.FileName = "newModel";
+            // 
             // TrainingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ClientSize = new System.Drawing.Size(1263, 857);
+            this.ClientSize = new System.Drawing.Size(1263, 865);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.TrainingParameters);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.VisualizationBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.GraphsBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GenerationProgress);
             this.Controls.Add(this.TrainButton);
@@ -465,17 +477,17 @@
             this.Controls.SetChildIndex(this.TrainButton, 0);
             this.Controls.SetChildIndex(this.GenerationProgress, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.Controls.SetChildIndex(this.GraphsBox, 0);
             this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.pictureBox2, 0);
+            this.Controls.SetChildIndex(this.VisualizationBox, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.TrainingParameters, 0);
             this.Controls.SetChildIndex(this.label13, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GraphsBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VisualizationBox)).EndInit();
+            this.TrainingParameters.ResumeLayout(false);
+            this.TrainingParameters.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -489,20 +501,20 @@
         private FlatButton TrainButton;
         private System.Windows.Forms.ProgressBar GenerationProgress;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox GraphsBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox VisualizationBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox GenerationSize;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox TrainingParameters;
         private System.Windows.Forms.TextBox ProceedToNext;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox GenerationsCount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox GamesToPlay;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox MaxScore;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox MutationRate;
         private System.Windows.Forms.Label label11;
@@ -511,11 +523,11 @@
         private System.Windows.Forms.TextBox HiddenNeurons;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox Games;
+        private System.Windows.Forms.ComboBox GamesComboBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label14;
-        private FlatButton flatButton1;
+        private FlatButton SaveButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

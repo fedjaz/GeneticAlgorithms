@@ -19,21 +19,21 @@ namespace GeneticAlgorithms
             Other
         }
 
-        [JsonProperty]
-        NeuralNetwork neuralNetwork;
+        public NeuralNetwork NeuralNetwork { get; set; }
         public Games GameType { get; }
-        public double Fitness { get; private set;  }
-        public double MeanScore { get; private set; }
+        public double Fitness { get; set;  }
+        public double MeanScore { get; set; }
+
 
         public Model(NeuralNetwork neuralNetwork, Games game)
         {
-            this.neuralNetwork = neuralNetwork;
+            this.NeuralNetwork = neuralNetwork;
             GameType = game;
         }
 
         public void Predict(Game game)
         {
-            Matrix<double> prediction = neuralNetwork.Predict(game.GetFeatures());
+            Matrix<double> prediction = NeuralNetwork.Predict(game.GetFeatures());
             for(int i = 0; i < prediction.Cells; i++)
             {
                 if(prediction[0, i] >= 0.5)
@@ -68,7 +68,7 @@ namespace GeneticAlgorithms
         public Model Mutate(double mutationRate, double mutationProbability, Random r)
         {
             Model mutated = Clone() as Model;
-            foreach(Matrix<double> layer in mutated.neuralNetwork.HiddenLayers)
+            foreach(Matrix<double> layer in mutated.NeuralNetwork.HiddenLayers)
             {
                 for(int i = 0; i < layer.Rows; i++)
                 {
@@ -81,21 +81,21 @@ namespace GeneticAlgorithms
                     }
                 }
             }
-            for(int i = 0; i < mutated.neuralNetwork.OutputLayer.Rows; i++)
+            for(int i = 0; i < mutated.NeuralNetwork.OutputLayer.Rows; i++)
             {
-                for(int j = 0; j < mutated.neuralNetwork.OutputLayer.Cells; j++)
+                for(int j = 0; j < mutated.NeuralNetwork.OutputLayer.Cells; j++)
                 {
                     if((double)r.Next(0, 10001) / 1000 <= mutationProbability)
                     {
-                        mutated.neuralNetwork.OutputLayer[i, j] += (double)r.Next(-1000, 10001) / 1000 * mutationRate;
+                        mutated.NeuralNetwork.OutputLayer[i, j] += (double)r.Next(-1000, 10001) / 1000 * mutationRate;
                     }
                 }
             }
-            for(int i = 0; i < mutated.neuralNetwork.OutputLayer.Cells; i++)
+            for(int i = 0; i < mutated.NeuralNetwork.OutputLayer.Cells; i++)
             {
                 if((double)r.Next(0, 10001) / 1000 <= mutationProbability)
                 {
-                    mutated.neuralNetwork.OutputLayer[0, i] += (double)r.Next(-1000, 10001) / 1000 * mutationRate;
+                    mutated.NeuralNetwork.OutputLayer[0, i] += (double)r.Next(-1000, 10001) / 1000 * mutationRate;
                 }
 
             }
@@ -104,22 +104,22 @@ namespace GeneticAlgorithms
 
         public void Reset(Random r)
         {
-            for(int i = 0; i < neuralNetwork.HiddenLayers.Count; i++)
+            for(int i = 0; i < NeuralNetwork.HiddenLayers.Count; i++)
             {
-                neuralNetwork.HiddenLayers[i] = new Matrix<double>(neuralNetwork.HiddenLayers[i].Rows,
-                                                                   neuralNetwork.HiddenLayers[i].Cells,
+                NeuralNetwork.HiddenLayers[i] = new Matrix<double>(NeuralNetwork.HiddenLayers[i].Rows,
+                                                                   NeuralNetwork.HiddenLayers[i].Cells,
                                                                    () => (double)r.Next(-1000, 1001) / 1000);
             }
-            neuralNetwork.OutputLayer = new Matrix<double>(neuralNetwork.OutputLayer.Rows,
-                                                           neuralNetwork.OutputLayer.Cells,
+            NeuralNetwork.OutputLayer = new Matrix<double>(NeuralNetwork.OutputLayer.Rows,
+                                                           NeuralNetwork.OutputLayer.Cells,
                                                            () => (double)r.Next(-1000, 1001) / 1000);
-            neuralNetwork.Bias = new Matrix<double>(neuralNetwork.Bias.Rows, neuralNetwork.Bias.Cells,
+            NeuralNetwork.Bias = new Matrix<double>(NeuralNetwork.Bias.Rows, NeuralNetwork.Bias.Cells,
                                                     () => (double)r.Next(-1000, 1001) / 1000);
         }
 
         public object Clone()
         {
-            return new Model(neuralNetwork.Clone() as NeuralNetwork, GameType);
+            return new Model(NeuralNetwork.Clone() as NeuralNetwork, GameType);
         }
     }
 }

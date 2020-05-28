@@ -19,14 +19,24 @@ namespace GeneticAlgorithms
             InitializeComponent();
         }
 
-        public void StartGame(Game game)
+        public void StartGame(Game game, string path)
         {
-            string JSON;
-            using(StreamReader sr = new StreamReader("default.model"))
+            Model defaultModel;
+            
+            try
             {
-                JSON = sr.ReadToEnd();
+                string JSON;
+                using(StreamReader sr = new StreamReader(path))
+                {
+                    JSON = sr.ReadToEnd();
+                }
+                defaultModel = JsonConvert.DeserializeObject<Model>(JSON);
             }
-            GameForm gameForm = new GameForm(this, game, JsonConvert.DeserializeObject<Model>(JSON));
+            catch
+            {
+                defaultModel = null;
+            }
+            GameForm gameForm = new GameForm(this, game, defaultModel);
             gameForm.Visible = true;
             Visible = false;
         }
@@ -38,7 +48,7 @@ namespace GeneticAlgorithms
 
         private void FlappyBirdButton_Click(object sender, EventArgs e)
         {
-            StartGame(new FlappyBird(0.5, new Random(), true));
+            StartGame(new FlappyBird(0.5, new Random(), true), @"../../../../Default Models/FlappyBird.model");
         }
 
         private void DinoButton_Click(object sender, EventArgs e)
