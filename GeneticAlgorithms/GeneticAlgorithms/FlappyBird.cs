@@ -11,7 +11,6 @@ namespace GeneticAlgorithms
 {
     public class FlappyBird : Game
     {
-        bool enableGraphics;
         double posY, posX;
         double minPosY, maxPosY;
         int score;
@@ -27,9 +26,8 @@ namespace GeneticAlgorithms
         Bitmap downPipe, upPipe, ground;
         Bitmap bird1, bird2, bird3, prevBird, curBird;
         public FlappyBird(double speed, Random r, bool enableGraphics) 
-                         : base(speed, new Keys[] { Keys.Space})
+                         : base(speed, new Keys[] { Keys.Space}, enableGraphics)
         {
-            this.enableGraphics = enableGraphics;
             IsDead = false;
             this.r = r;
         }
@@ -49,7 +47,7 @@ namespace GeneticAlgorithms
             pipeHeight = 80;
             pipeSpacing = 225;
             firstGroundPos = -ControlSize.Width / 2;
-            if(enableGraphics)
+            if(EnableGraphics)
             {
                 SetPictures();
             }
@@ -82,7 +80,7 @@ namespace GeneticAlgorithms
                 pipes = GetPipes(20, ControlSize.Width / 2);
             }
 
-            if(enableGraphics)
+            if(EnableGraphics)
             {
                 if(firstGroundPos < posX - ControlSize.Width)
                 {
@@ -191,7 +189,7 @@ namespace GeneticAlgorithms
 
         public override object Clone()
         {
-            Game game = new FlappyBird(Speed, r, enableGraphics) 
+            Game game = new FlappyBird(Speed, r, EnableGraphics) 
             {
                 ControlSize = ControlSize,
                 posY = posY,
@@ -202,7 +200,7 @@ namespace GeneticAlgorithms
                 pipeHeight = pipeHeight,
                 pipeSpacing = pipeSpacing
             };
-            if(enableGraphics)
+            if(EnableGraphics)
             {
                 (game as FlappyBird).SetPictures();
             }

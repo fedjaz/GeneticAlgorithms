@@ -15,6 +15,7 @@ namespace GeneticAlgorithms
         public double Speed { get; set; }
         public bool IsActive { get; set; }
         public bool IsDead { get; set; }
+        public bool EnableGraphics { get; set; }
         public Keys[] KeysMap { get; private set; }
         public abstract void RecieveKey(object sender, KeyEventArgs args);
         public abstract void Tick();
@@ -30,8 +31,9 @@ namespace GeneticAlgorithms
             Other
         }
 
-        public Game(double speed, Keys[] keys)
+        public Game(double speed, Keys[] keys, bool enableGraphics)
         {
+            EnableGraphics = enableGraphics;
             KeysMap = keys;
             Speed = speed;
         }

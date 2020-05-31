@@ -87,10 +87,6 @@ namespace GeneticAlgorithms
                 {
                     CompatibleGame.Text = "Compatible game: Dino";
                 }
-                if(newModel.GameType == Model.Games.Breakout)
-                {
-                    CompatibleGame.Text = "Compatible game: Breakout";
-                }
                 ModelStatus.Visible = true;
                 ModelStatus.Text = "Model is ready.";
                 ModelStatus.ForeColor = Color.White;

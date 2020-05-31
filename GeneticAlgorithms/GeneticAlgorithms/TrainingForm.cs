@@ -1,16 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GeneticAlgorithms
@@ -106,8 +102,10 @@ namespace GeneticAlgorithms
             }
             else
             {
-                MessageBox.Show("Other games are not done yet.");
+                MessageBox.Show("Dino is not supported yet");
                 return;
+                ////defaultModel = new Model(new NeuralNetwork(4, hiddenNeurons, 1, r), Model.Games.FlappyBird);
+                //etalonGame = new Dino(1, r, false);
             }
             etalonGame.ControlSize = GameForm.ControlSize;
             etalonGame.SetDefaultOptions();

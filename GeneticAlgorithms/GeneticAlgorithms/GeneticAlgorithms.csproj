@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dino.cs" />
     <Compile Include="FlappyBird.cs" />
     <Compile Include="FlatButton.cs">
       <SubType>Component</SubType>
@@ -174,6 +175,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BeginTrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CactusBig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CactusSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dino1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dino2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dino3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

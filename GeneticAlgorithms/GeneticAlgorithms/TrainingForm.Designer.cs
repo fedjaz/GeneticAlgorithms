@@ -232,8 +232,7 @@
             this.GamesComboBox.FormattingEnabled = true;
             this.GamesComboBox.Items.AddRange(new object[] {
             "Flappy bird",
-            "Dino",
-            "Breakout"});
+            "Dino"});
             this.GamesComboBox.Location = new System.Drawing.Point(21, 67);
             this.GamesComboBox.Name = "GamesComboBox";
             this.GamesComboBox.Size = new System.Drawing.Size(150, 28);

@@ -15,7 +15,6 @@ namespace GeneticAlgorithms
         {
             FlappyBird,
             Dino,
-            Breakout,
             Other
         }
 
