@@ -171,7 +171,7 @@
             this.GenerationSize.Name = "GenerationSize";
             this.GenerationSize.Size = new System.Drawing.Size(150, 26);
             this.GenerationSize.TabIndex = 10;
-            this.GenerationSize.Text = "1000";
+            this.GenerationSize.Text = "5000";
             // 
             // label4
             // 
@@ -291,7 +291,7 @@
             this.HiddenNeurons.Name = "HiddenNeurons";
             this.HiddenNeurons.Size = new System.Drawing.Size(150, 26);
             this.HiddenNeurons.TabIndex = 20;
-            this.HiddenNeurons.Text = "4 4";
+            this.HiddenNeurons.Text = "8 8";
             // 
             // label9
             // 
@@ -335,7 +335,7 @@
             this.MaxScore.Name = "MaxScore";
             this.MaxScore.Size = new System.Drawing.Size(150, 26);
             this.MaxScore.TabIndex = 16;
-            this.MaxScore.Text = "1000";
+            this.MaxScore.Text = "5000";
             // 
             // label7
             // 
@@ -379,7 +379,7 @@
             this.ProceedToNext.Name = "ProceedToNext";
             this.ProceedToNext.Size = new System.Drawing.Size(150, 26);
             this.ProceedToNext.TabIndex = 12;
-            this.ProceedToNext.Text = "20";
+            this.ProceedToNext.Text = "200";
             // 
             // label5
             // 
