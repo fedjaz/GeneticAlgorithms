@@ -32,7 +32,7 @@ namespace GeneticAlgorithms
             this.game = game;
             game.ControlSize = GameBox.Size;
             GameBox.Paint += game.PaintOnControl;
-            KeyDown += game.RecieveKey;
+            KeyDown += game.ReceiveKey;
             game.SetDefaultOptions();
         }
 
@@ -42,7 +42,7 @@ namespace GeneticAlgorithms
             if(game.IsDead && !game.IsActive)
             {
                 GameBox.Paint -= game.PaintOnControl;
-                KeyDown -= game.RecieveKey;
+                KeyDown -= game.ReceiveKey;
                 ConfigureGame(game.Clone() as Game);
             }
             if(game.IsActive)

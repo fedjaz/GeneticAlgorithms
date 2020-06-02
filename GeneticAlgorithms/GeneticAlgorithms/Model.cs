@@ -37,7 +37,7 @@ namespace GeneticAlgorithms
             {
                 if(prediction[0, i] >= 0.5)
                 {
-                    game.RecieveKey(this, new KeyEventArgs(game.KeysMap[i]));
+                    game.ReceiveKey(this, new KeyEventArgs(game.KeysMap[i]));
                 }
             }
         }

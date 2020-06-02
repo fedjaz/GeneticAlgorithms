@@ -143,7 +143,7 @@ namespace GeneticAlgorithms
             e.Graphics.DrawString(score.ToString(), new Font("Lobster", 16), new SolidBrush(Color.White), 20, 20);
         }
 
-        public override void RecieveKey(object sender, KeyEventArgs args)
+        public override void ReceiveKey(object sender, KeyEventArgs args)
         {
             if(IsDead)
             {

@@ -17,7 +17,7 @@ namespace GeneticAlgorithms
         public bool IsDead { get; set; }
         public bool EnableGraphics { get; set; }
         public Keys[] KeysMap { get; private set; }
-        public abstract void RecieveKey(object sender, KeyEventArgs args);
+        public abstract void ReceiveKey(object sender, KeyEventArgs args);
         public abstract void Tick();
         public abstract void PaintOnControl(object sender, PaintEventArgs args);
         public abstract void SetDefaultOptions();
